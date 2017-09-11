@@ -1,0 +1,5 @@
+name: Hello World!
+description: A module that tells the world hello.
+type: module
+core: 8.x
+package: Custom

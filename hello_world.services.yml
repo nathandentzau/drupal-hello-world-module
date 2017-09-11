@@ -1,0 +1,4 @@
+services:
+  hello_world.json_response_listener:
+    class: "Drupal\\hello_world\\EventListener\\JsonResponseListener"
+    tags: [{ name: event_subscriber }]

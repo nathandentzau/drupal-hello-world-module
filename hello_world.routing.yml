@@ -1,0 +1,22 @@
+hello_world.index:
+  path: "/hello_world"
+  defaults:
+    _controller: "Drupal\\hello_world\\Controller\\HelloWorldController::indexAction"
+    _title: "Hello World!"
+  requirements:
+    _access: "TRUE"
+hello_world.json:
+  path: "/hello_world/json"
+  defaults:
+    _controller: "Drupal\\hello_world\\controller\\HelloWorldController::jsonAction"
+    _title: "Hello World!"
+  requirements:
+    _access: "TRUE"
+
+hello_world.config:
+  path: "/admin/config/system/hello_world"
+  defaults:
+    _form: "Drupal\\hello_world\\Form\\HelloWorldConfiguration"
+    _title: "Hello World Configuration"
+  requirements:
+    _permission: "administer content"
