@@ -30,7 +30,7 @@ class JsonResponseListener implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     return [
-      KernelEvents::RESPONSE => [['onKernelResponse', 0]],
+      KernelEvents::RESPONSE => 'onKernelResponse',
     ];
   }
 
