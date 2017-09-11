@@ -57,6 +57,8 @@ class HelloWorldController extends ControllerBase {
    * @return Response
    */
   public function nameAction($name, Request $request) {
+    // Not best practice to include HTML in the controller but this is for
+    // demonstration purposes only.
     $information = [
       '<strong>Current path:</strong> ' . $request->getRequestUri(),
       '<strong>Request method:</strong> ' . $request->getMethod(),
