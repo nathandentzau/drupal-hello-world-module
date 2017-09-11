@@ -8,7 +8,13 @@ hello_world.index:
 hello_world.json:
   path: "/hello_world/json"
   defaults:
-    _controller: "Drupal\\hello_world\\controller\\HelloWorldController::jsonAction"
+    _controller: "Drupal\\hello_world\\Controller\\HelloWorldController::jsonAction"
+  requirements:
+    _access: "TRUE"
+hello_world.name:
+  path: "/hello_world/name/{name}"
+  defaults:
+    _controller: "Drupal\\hello_world\\Controller\\HelloWorldController::nameAction"
     _title: "Hello World!"
   requirements:
     _access: "TRUE"

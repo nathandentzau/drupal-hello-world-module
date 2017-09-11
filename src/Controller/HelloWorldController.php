@@ -6,6 +6,8 @@ use Drupal\Core\Config\Config;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class HelloWorldController extends ControllerBase {
 
@@ -46,6 +48,35 @@ class HelloWorldController extends ControllerBase {
    */
   public function jsonAction() {
     return new JsonResponse(['message' => $this->getMessage()]);
+  }
+
+  /**
+   * @param string $name
+   * @param Request $request
+   *
+   * @return Response
+   */
+  public function nameAction($name, Request $request) {
+    $information = [
+      '<strong>Current path:</strong> ' . $request->getRequestUri(),
+      '<strong>Request method:</strong> ' . $request->getMethod(),
+      '<strong>IP Address:</strong> ' . $request->server->get('REMOTE_ADDR'),
+      '<strong>User Agent:</strong> ' . $request->server->get('HTTP_USER_AGENT'),
+    ];
+
+    if (count($request->query) > 0) {
+      $information[] = '<strong>Query Paramters:</strong> '
+        . '<pre>' . print_r($request->query->all(), TRUE) . '</pre>';
+    }
+
+    return new Response(
+      sprintf(
+        "Hi %s! Here's some information about your request: %s",
+        $name,
+        '<p>' . implode('<br>', $information) . '</p>'
+      ),
+      Response::HTTP_I_AM_A_TEAPOT
+    );
   }
 
   /**
