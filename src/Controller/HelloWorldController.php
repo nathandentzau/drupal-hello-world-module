@@ -66,7 +66,7 @@ class HelloWorldController extends ControllerBase {
       '<strong>User Agent:</strong> ' . $request->server->get('HTTP_USER_AGENT'),
     ];
 
-    if (count($request->query) > 0) {
+    if (!empty($request->query->all())) {
       $information[] = '<strong>Query Paramters:</strong> '
         . '<pre>' . print_r($request->query->all(), TRUE) . '</pre>';
     }
